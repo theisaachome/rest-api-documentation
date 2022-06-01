@@ -1,0 +1,1 @@
+$ref: './otherOpenApi.yaml#/components/MyItem'
