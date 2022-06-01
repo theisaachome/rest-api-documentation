@@ -21,11 +21,59 @@ paths:
             application/json:
               schema: 
                 type: array
+                minLength: 1
+                maxLength: 100
+                description: List of Customers.
                 items:  
-                  type: string
-                  description: Customer names.
-                  minLength: 2
-                  maxLength: 100
+                  type: object
+                  description: customer object.
+                  properties:
+                    id:
+                      type: string
+                      format: uuid                    
+                    firstName: 
+                      type: string
+                      minLength: 5
+                      maxLength: 30
+                      example: "isaac"
+                    lastName:
+                      type: string
+                      minLength: 5
+                      maxLength: 30
+                      example: "home"
+                    email:
+                      type: string
+                      example: "isaachome@gmail.com"
+                    address:
+                      type: object
+                      properties:
+                        line1:
+                          type: string
+                          example: "Train Station Road."
+                        city:
+                          type: string
+                          example: "Yangon"
+                        stateCode:
+                          type: string
+                          maxLength: 2
+                          minLength: 2
+                          description: 2 Letter State code.
+                          # enum: [AL,AK,AZ,AR,CA] array of string enum
+                          enum:
+                           -  AL
+                           -  AK
+                           -  AZ
+                           -  AR
+                           -  CA
+                        zipCode:
+                          type: string
+                          example: 11061
+
+
+
+
+                  
+                    
 
     
   /v1/beers:
