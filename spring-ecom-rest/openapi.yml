@@ -1,0 +1,67 @@
+openapi: '3.0.2'
+info:
+  title: Sample Ecommerce API
+  description: 'This is a ***sample ecommerce app API***.  You can find out more about Swagger at [swagger.io](http://swagger.io).
+    Description supports markdown markup. For example, you can use the `inline code` using back ticks.'
+  version: '1.0'
+  contact:
+    email: isaachome@highway.com
+    name: highway65
+    url: https:highway65.com
+servers:
+  - url: https://api.server.test/v1
+    description: Development Server 1 description
+  - url: https://api.server.test/v2
+    description: Server 2 description
+tags:
+  - name: cart
+    description: Everything about cart
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: order
+    description: Operation about orders
+  - name: customer
+    description: Operations about user's persona customer
+  - name: address
+    description: Operations about user's address
+  - name: payment
+    description: Operations about payments
+  - name: shipment
+    description: Operations about shippings
+  - name: product
+    description: Operations about products
+
+
+paths:
+  /v1/cart/{}:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cart"
+
+components:
+  schemas:
+    Cart:
+      description: Shopping Cart of the User 
+      type: object
+      properties:
+        id:
+          description: Cart Identifier
+          type: string
+        customerId:
+          description: The Customer who process the car
+          type: string
+        items:
+          description: Collection of items in cart.
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+
+    Item:
+      description: Items in the Shopping Cart.
+                
