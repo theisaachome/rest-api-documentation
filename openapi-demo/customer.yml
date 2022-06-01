@@ -3,11 +3,36 @@ info:
   title: OpenAPI Course
   version: '1.0'
   description: Specification for OpenAPI
+  termsOfService: http://example.com/terms/
+  contact:
+    name: "isaachome"
+    email: isaachome@highway65.com
+    url: "https://highway65.solt.com"
 servers:
   - url: https://api.server.test/v1
+    description: "Development server"
 paths:
-  /test:
+  /v1/customers:
     get:
       responses:
         '200':
-          description: OK
+          description: List of Customers.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items:  
+                  type: string
+                  description: Customer names.
+                  minLength: 2
+                  maxLength: 100
+
+    
+  /v1/beers:
+    get:
+      responses:
+        '200':
+          description: List of Beers.
+          
+        '400':
+          description:  No Beers Found.
